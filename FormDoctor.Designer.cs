@@ -38,6 +38,9 @@
             txtdiagnostico = new System.Windows.Forms.TextBox();
             txtreceta = new System.Windows.Forms.TextBox();
             btndiagnostico = new System.Windows.Forms.Button();
+            btnbuscar = new System.Windows.Forms.Button();
+            lblinfo = new System.Windows.Forms.Label();
+            txtResultado = new System.Windows.Forms.TextBox();
             SuspendLayout();
             // 
             // btnregresar
@@ -45,7 +48,7 @@
             btnregresar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)230)), ((int)((byte)81)), ((int)((byte)0)));
             btnregresar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
             btnregresar.ForeColor = System.Drawing.Color.White;
-            btnregresar.Location = new System.Drawing.Point(415, 344);
+            btnregresar.Location = new System.Drawing.Point(415, 394);
             btnregresar.Name = "btnregresar";
             btnregresar.Size = new System.Drawing.Size(147, 57);
             btnregresar.TabIndex = 2;
@@ -65,7 +68,7 @@
             // lblsintoma
             // 
             lblsintoma.AutoSize = true;
-            lblsintoma.Location = new System.Drawing.Point(40, 107);
+            lblsintoma.Location = new System.Drawing.Point(44, 191);
             lblsintoma.Name = "lblsintoma";
             lblsintoma.Size = new System.Drawing.Size(171, 15);
             lblsintoma.TabIndex = 4;
@@ -74,7 +77,7 @@
             // lbldiagnostico
             // 
             lbldiagnostico.AutoSize = true;
-            lbldiagnostico.Location = new System.Drawing.Point(40, 175);
+            lbldiagnostico.Location = new System.Drawing.Point(44, 259);
             lbldiagnostico.Name = "lbldiagnostico";
             lbldiagnostico.Size = new System.Drawing.Size(113, 15);
             lbldiagnostico.TabIndex = 5;
@@ -83,7 +86,7 @@
             // lblreceta
             // 
             lblreceta.AutoSize = true;
-            lblreceta.Location = new System.Drawing.Point(40, 246);
+            lblreceta.Location = new System.Drawing.Point(44, 330);
             lblreceta.Name = "lblreceta";
             lblreceta.Size = new System.Drawing.Size(117, 15);
             lblreceta.TabIndex = 6;
@@ -98,7 +101,7 @@
             // 
             // txtsintomas
             // 
-            txtsintomas.Location = new System.Drawing.Point(259, 102);
+            txtsintomas.Location = new System.Drawing.Point(263, 186);
             txtsintomas.Multiline = true;
             txtsintomas.Name = "txtsintomas";
             txtsintomas.Size = new System.Drawing.Size(156, 46);
@@ -106,7 +109,7 @@
             // 
             // txtdiagnostico
             // 
-            txtdiagnostico.Location = new System.Drawing.Point(184, 172);
+            txtdiagnostico.Location = new System.Drawing.Point(188, 256);
             txtdiagnostico.Multiline = true;
             txtdiagnostico.Name = "txtdiagnostico";
             txtdiagnostico.Size = new System.Drawing.Size(195, 48);
@@ -114,7 +117,7 @@
             // 
             // txtreceta
             // 
-            txtreceta.Location = new System.Drawing.Point(196, 240);
+            txtreceta.Location = new System.Drawing.Point(200, 324);
             txtreceta.Multiline = true;
             txtreceta.Name = "txtreceta";
             txtreceta.Size = new System.Drawing.Size(195, 48);
@@ -125,19 +128,52 @@
             btndiagnostico.BackColor = System.Drawing.Color.FromArgb(((int)((byte)2)), ((int)((byte)136)), ((int)((byte)209)));
             btndiagnostico.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
             btndiagnostico.ForeColor = System.Drawing.Color.White;
-            btndiagnostico.Location = new System.Drawing.Point(40, 344);
+            btndiagnostico.Location = new System.Drawing.Point(40, 394);
             btndiagnostico.Name = "btndiagnostico";
             btndiagnostico.Size = new System.Drawing.Size(167, 57);
             btndiagnostico.TabIndex = 11;
             btndiagnostico.Text = "Guardar Diagnostico";
             btndiagnostico.UseVisualStyleBackColor = false;
+            btndiagnostico.Click += btndiagnostico_Click;
+            // 
+            // btnbuscar
+            // 
+            btnbuscar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)2)), ((int)((byte)136)), ((int)((byte)209)));
+            btnbuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+            btnbuscar.ForeColor = System.Drawing.Color.White;
+            btnbuscar.Location = new System.Drawing.Point(394, 57);
+            btnbuscar.Name = "btnbuscar";
+            btnbuscar.Size = new System.Drawing.Size(90, 25);
+            btnbuscar.TabIndex = 12;
+            btnbuscar.Text = "Buscar";
+            btnbuscar.UseVisualStyleBackColor = false;
+            btnbuscar.Click += btnbuscar_Click;
+            // 
+            // lblinfo
+            // 
+            lblinfo.Location = new System.Drawing.Point(40, 88);
+            lblinfo.Name = "lblinfo";
+            lblinfo.Size = new System.Drawing.Size(520, 60);
+            lblinfo.TabIndex = 13;
+            lblinfo.Text = "Ingresa el DNI y presiona Buscar para ver los datos del paciente.";
+            // 
+            // txtResultado
+            // 
+            txtResultado.Location = new System.Drawing.Point(44, 122);
+            txtResultado.Multiline = true;
+            txtResultado.Name = "txtResultado";
+            txtResultado.Size = new System.Drawing.Size(351, 46);
+            txtResultado.TabIndex = 14;
             // 
             // FormDoctor
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(((int)((byte)224)), ((int)((byte)242)), ((int)((byte)241)));
-            ClientSize = new System.Drawing.Size(602, 450);
+            ClientSize = new System.Drawing.Size(602, 480);
+            Controls.Add(txtResultado);
+            Controls.Add(lblinfo);
+            Controls.Add(btnbuscar);
             Controls.Add(btndiagnostico);
             Controls.Add(txtreceta);
             Controls.Add(txtdiagnostico);
@@ -156,17 +192,21 @@
             PerformLayout();
         }
 
+        private System.Windows.Forms.TextBox txtResultado;
+
         #endregion
 
         private Button btnregresar;
         private Label lbldni;
-        private Label lblsintoma;
-        private Label lbldiagnostico;
-        private Label lblreceta;
+        private System.Windows.Forms.Label lblsintoma;
+        private System.Windows.Forms.Label lbldiagnostico;
+        private System.Windows.Forms.Label lblreceta;
         private TextBox txtdni;
-        private TextBox txtsintomas;
-        private TextBox txtdiagnostico;
-        private TextBox txtreceta;
+        private System.Windows.Forms.TextBox txtsintomas;
+        private System.Windows.Forms.TextBox txtdiagnostico;
+        private System.Windows.Forms.TextBox txtreceta;
         private Button btndiagnostico;
+        private Button btnbuscar;
+        private Label lblinfo;
     }
 }
