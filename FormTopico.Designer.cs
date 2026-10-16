@@ -106,12 +106,19 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ReadOnly = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new System.Drawing.Point(36, 237);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new System.Drawing.Size(300, 188);
             dataGridView1.TabIndex = 9;
+            dataGridView1.Columns.Add("colDni", "DNI");
+            dataGridView1.Columns.Add("colPresion", "Presión");
+            dataGridView1.Columns.Add("colTempPeso", "Temp. y Peso");
+            dataGridView1.Columns.Add("colObs", "Observaciones");
             // 
             // lbldni
             // 
@@ -140,6 +147,7 @@
             btnatencion.TabIndex = 12;
             btnatencion.Text = "Guardar Atencion";
             btnatencion.UseVisualStyleBackColor = false;
+            btnatencion.Click += btnatencion_Click;
             // 
             // FormTopico
             // 
