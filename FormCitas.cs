@@ -17,14 +17,9 @@ namespace proyecto1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormLogin login = new FormLogin();
-            login.Show();
+            FormMenu menu = new FormMenu();
+            menu.Show();
             this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

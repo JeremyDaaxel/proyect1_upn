@@ -2,90 +2,69 @@ namespace proyecto1
 {
     public partial class FormLogin : Form
     {
-        private const string userName = "admin";
-        private const string passwordTrue = "1234";
-
+        private const string ClavePaciente = "admin";
+        private const string UsuarioTopico = "admin";
+        private const string ClaveTopico = "123";
+        private const string UsuarioDoctor = "admin";
+        private const string ClaveDoctor = "123";
+        
         public FormLogin()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btningresar_Click(object sender, EventArgs e)
         {
             string usuario = txtusuario.Text.Trim();
             string password = txtpassword.Text;
+            string rol = "";
+            bool credencialesValidas = false;
 
-            if (usuario == userName && password == passwordTrue)
+            //aqui reconocemos el rol segun el usuario/codigo que escriban, sin combo
+            if (usuario == UsuarioTopico && password == ClaveTopico)
             {
-                label3.Text = "";
-                MostrarMenu();
+                rol = "Topico";
+                credencialesValidas = true;
+            }
+            else if (usuario == UsuarioDoctor && password == ClaveDoctor)
+            {
+                rol = "Doctor";
+                credencialesValidas = true;
+            }
+            else if (password == ClavePaciente)
+            {
+                rol = "Paciente";
+                credencialesValidas = true;
+            }
+
+            if (credencialesValidas)
+            {
+                FormMenu menu = new FormMenu(rol);
+                menu.Show();
+                this.Hide();
             }
             else
             {
-                label3.Text = "Usuario o contraseña incorrectos.";
+                MessageBox.Show("Usuario o contraseña incorrectos.",
+                    "Error de acceso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtpassword.Clear();
                 txtpassword.Focus();
             }
         }
 
-        //solo si es correcto el login
-        private void MostrarMenu()
+        private void lblSalir_Click(object sender, EventArgs e)
         {
-            lblusuario.Visible = false;
-            txtusuario.Visible = false;
-            lblpassword.Visible = false;
-            txtpassword.Visible = false;
-            btningresar.Visible = false;
-            label3.Visible = false;
-
-            lbltitulo.Text = "Menú Principal";
-            btncita.Visible = true;
-            btntopico.Visible = true;
-            btndoctor.Visible = true;
-            btnregistrar.Visible = true;
-        }
-
-        private void btncita_Click(object sender, EventArgs e)
-        {
-            FormCitas formcita = new FormCitas();
-            formcita.Show();
-            this.Hide();
-        }
-
-        private void btntopico_Click(object sender, EventArgs e)
-        {
-            FormTopico formtopico = new FormTopico();
-            formtopico.Show();
-            this.Hide();
-        }
-
-        private void btndoctor_Click(object sender, EventArgs e)
-        {
-            FormDoctor formdoctor = new FormDoctor();
-            formdoctor.Show();
-            this.Hide();
-        }
-
-        private void btnregistrar_Click(object sender, EventArgs e)
-        {
-            FormRegistroPaciente formregistrar = new FormRegistroPaciente();
-            formregistrar.Show();
-            this.Hide();
-        }
-
-        private void btnsalir_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea salir?", "Confirmar salida", MessageBoxButtons.YesNo,
+            DialogResult result = MessageBox.Show(
+                "¿Está seguro de que desea salir?",
+                "Confirmar salida", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
+
+        private void FormLogin_Load(object sender, EventArgs e) { }
     }
 }
