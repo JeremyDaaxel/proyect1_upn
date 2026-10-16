@@ -76,6 +76,7 @@
             // 
             comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Medicina General", "Pediatría", "Ginecología", "Odontología" });
             comboBox1.Location = new System.Drawing.Point(150, 107);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new System.Drawing.Size(196, 23);
@@ -113,12 +114,19 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ReadOnly = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new System.Drawing.Point(22, 233);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new System.Drawing.Size(430, 185);
             dataGridView1.TabIndex = 7;
+            dataGridView1.Columns.Add("colDni", "DNI");
+            dataGridView1.Columns.Add("colEspecialidad", "Especialidad");
+            dataGridView1.Columns.Add("colFecha", "Fecha");
+            dataGridView1.Columns.Add("colCosto", "Costo (S/)");
             // 
             // button1
             // 
@@ -129,6 +137,7 @@
             button1.TabIndex = 8;
             button1.Text = "Reservar Cita";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += btnreservar_Click;
             // 
             // FormCitas
             // 

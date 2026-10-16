@@ -2,10 +2,10 @@ namespace proyecto1
 {
     public partial class FormLogin : Form
     {
-        private const string ClavePaciente = "admin";
-        private const string UsuarioTopico = "admin";
+        private const string ClavePaciente = "paciente";
+        private const string UsuarioTopico = "topico";
         private const string ClaveTopico = "123";
-        private const string UsuarioDoctor = "admin";
+        private const string UsuarioDoctor = "doctor";
         private const string ClaveDoctor = "123";
         
         public FormLogin()
