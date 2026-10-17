@@ -41,7 +41,7 @@ namespace proyecto1
             nuePaciente.Seguro = cboseguro.Text;
             
             //agregamos los datos que ingresamos a la lista de pacientes que tenemos en DatosGlobales
-            Datos.pacientes.Add(nuePaciente);
+            Datos.pacientes[Datos.contadorPacientes++] = nuePaciente;
             MessageBox.Show("Paciente guardado con éxito.", "Registro exitoso",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             

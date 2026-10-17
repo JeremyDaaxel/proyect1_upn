@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace proyecto1
 {
     public class Paciente
@@ -45,9 +43,16 @@ namespace proyecto1
     //lo mismo que en paciente
     public static class Datos
     {
-        public static List<Paciente> pacientes = new List<Paciente>();
-        public static List<Triaje> atenciones = new List<Triaje>();
-        public static List<Diagnostico> diagnosticos = new List<Diagnostico>();
-        public static List<Cita> citas = new List<Cita>();
+        public static Paciente[] pacientes = new Paciente[100];
+        public static int contadorPacientes = 0;
+
+        public static Triaje[] atenciones = new Triaje[100];
+        public static int contadorAtenciones = 0;
+
+        public static Diagnostico[] diagnosticos = new Diagnostico[100];
+        public static int contadorDiagnosticos = 0;
+
+        public static Cita[] citas = new Cita[100];
+        public static int contadorCitas = 0;
     }
 }

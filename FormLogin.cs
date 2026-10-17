@@ -17,27 +17,11 @@ namespace proyecto1
         {
             string usuario = txtusuario.Text.Trim();
             string password = txtpassword.Text;
-            string rol = "";
-            bool credencialesValidas = false;
 
-            //aqui reconocemos el rol segun el usuario/codigo que escriban, sin combo
-            if (usuario == UsuarioTopico && password == ClaveTopico)
-            {
-                rol = "Topico";
-                credencialesValidas = true;
-            }
-            else if (usuario == UsuarioDoctor && password == ClaveDoctor)
-            {
-                rol = "Doctor";
-                credencialesValidas = true;
-            }
-            else if (password == ClavePaciente)
-            {
-                rol = "Paciente";
-                credencialesValidas = true;
-            }
+            //funcion: le mando usuario y contraseña, me retorna el rol (o "" si no es valido)
+            string rol = DetectarRol(usuario, password);
 
-            if (credencialesValidas)
+            if (rol != "")
             {
                 FormMenu menu = new FormMenu(rol);
                 menu.Show();
@@ -50,6 +34,27 @@ namespace proyecto1
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtpassword.Clear();
                 txtpassword.Focus();
+            }
+        }
+
+        //funcion: recibe usuario y password, retorna el nombre del rol segun las credenciales
+        private string DetectarRol(string usuario, string password)
+        {
+            if (usuario == UsuarioTopico && password == ClaveTopico)
+            {
+                return "Topico";
+            }
+            else if (usuario == UsuarioDoctor && password == ClaveDoctor)
+            {
+                return "Doctor";
+            }
+            else if (password == ClavePaciente)
+            {
+                return "Paciente";
+            }
+            else
+            {
+                return "";
             }
         }
 

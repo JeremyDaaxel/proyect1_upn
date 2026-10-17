@@ -76,7 +76,6 @@
             // 
             comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Medicina General", "Pediatría", "Ginecología", "Odontología" });
             comboBox1.Location = new System.Drawing.Point(150, 107);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new System.Drawing.Size(196, 23);

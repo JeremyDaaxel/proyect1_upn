@@ -46,7 +46,7 @@ namespace proyecto1
             nuevaAtencion.Observaciones = txtobs.Text;
 
             //agregamos los datos que ingresamos a la lista de atenciones que tenemos en DatosGlobales
-            Datos.atenciones.Add(nuevaAtencion);
+            Datos.atenciones[Datos.contadorAtenciones++] = nuevaAtencion;
 
             //agregamos la fila nueva directo a la tabla, sin recargar todo
             dataGridView1.Rows.Add(nuevaAtencion.Dni, nuevaAtencion.PresionArterial, nuevaAtencion.TemperaturaPeso, nuevaAtencion.Observaciones);

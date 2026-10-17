@@ -36,7 +36,7 @@ namespace proyecto1
             Paciente pacienteEncontrado = null;
 
             //buscamos si el paciente ya esta registrado
-            for (int i = 0; i < Datos.pacientes.Count; i++)
+            for (int i = 0; i < Datos.contadorPacientes; i++)
             {
                 if (Datos.pacientes[i].Dni == dniBuscado)
                 {
@@ -51,15 +51,8 @@ namespace proyecto1
                 return;
             }
 
-            //calculamos el costo segun si tiene SIS o no
-            int costoCita;
-            if (pacienteEncontrado.Seguro == "SIS")
-            {
-                costoCita = 0;
-            } else
-            {
-                costoCita = 20;
-            }
+            //calculamos el costo segun si tiene SIS o no (esto es una funcion, retorna el costo)
+            int costoCita = CalcularCosto(pacienteEncontrado.Seguro);
 
             //creamos el objeto nuevaCita (de la clase Cita en DatosGlobales) y le asignamos los datos
             Cita nuevaCita = new Cita();
@@ -69,7 +62,7 @@ namespace proyecto1
             nuevaCita.Costo = costoCita;
 
             //agregamos los datos que ingresamos a la lista de citas que tenemos en DatosGlobales
-            Datos.citas.Add(nuevaCita);
+            Datos.citas[Datos.contadorCitas++] = nuevaCita;
 
             //agregamos la fila nueva directo a la tabla, sin recargar todo
             dataGridView1.Rows.Add(nuevaCita.Dni, nuevaCita.Especialidad, nuevaCita.Fecha, nuevaCita.Costo);
@@ -79,6 +72,19 @@ namespace proyecto1
 
             //limpiamos los inputs una vez se registre
             txtdni.Clear();
+        }
+
+        //funcion: recibe el seguro del paciente y retorna (return) el costo de la cita
+        private int CalcularCosto(string seguro)
+        {
+            if (seguro == "SIS")
+            {
+                return 0;
+            }
+            else
+            {
+                return 20;
+            }
         }
     }
 }

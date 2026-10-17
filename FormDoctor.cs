@@ -39,32 +39,23 @@ namespace proyecto1
 
             int dniBuscado = int.Parse(txtdni.Text);
 
-            //recorrer la lista de pacientes buscando ese dni
-            //(es lo mismo que hicimos en FormCitas, solo que aca buscamos en Datos.pacientes)
-            Paciente pacienteEncontrado = null;
-            for (int i = 0; i < Datos.pacientes.Count; i++)
-            {
-                if (Datos.pacientes[i].Dni == dniBuscado)
-                {
-                    pacienteEncontrado = Datos.pacientes[i];
-                }
-            }
+            //funcion: le mando el dni, me retorna el paciente encontrado (o null si no existe)
+            Paciente pacienteEncontrado = BuscarPaciente(dniBuscado);
 
             //si no encontro a nadie con ese dni, avisamos y paramos aca
+
             if (pacienteEncontrado == null)
             {
                 txtResultado.Text = "No se encontro un paciente registrado con ese DNI.";
                 return;
             }
 
-            // recorrer la lista de atenciones de topico buscando ese mismo dni
-            //(mismo patron de busqueda otra vez, solo que en Datos.atenciones)
+            //recorremos la lista de atenciones de topico buscando ese mismo dni
             Triaje triajeEncontrado = null;
-            for (int i = 0; i < Datos.atenciones.Count; i++)
-            {
-                if (Datos.atenciones[i].Dni == dniBuscado)
-                {
-                    triajeEncontrado = Datos.atenciones[i];
+
+            for (int i = 0; i < Datos.contadorAtenciones; i++)
+            { if (Datos.atenciones[i].Dni == dniBuscado)
+                { triajeEncontrado = Datos.atenciones[i];
                 }
             }
 
@@ -106,7 +97,7 @@ namespace proyecto1
             nuevoDiagnostico.Receta = txtreceta.Text;
 
             //agregamos los datos que ingresamos a la lista de diagnosticos que tenemos en DatosGlobales
-            Datos.diagnosticos.Add(nuevoDiagnostico);
+            Datos.diagnosticos[Datos.contadorDiagnosticos++] = nuevoDiagnostico;
 
             MessageBox.Show("Diagnóstico guardado con éxito.", "Registro exitoso",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -115,6 +106,22 @@ namespace proyecto1
             txtsintomas.Clear();
             txtdiagnostico.Clear();
             txtreceta.Clear();
+        }
+
+        //funcion: recorre Datos.pacientes y retorna el paciente que tenga ese dni (o null)
+        private Paciente BuscarPaciente(int dni)
+        {
+            Paciente encontrado = null;
+
+            for (int i = 0; i < Datos.contadorPacientes; i++)
+            {
+                if (Datos.pacientes[i].Dni == dni)
+                {
+                    encontrado = Datos.pacientes[i];
+                }
+            }
+
+            return encontrado;
         }
     }
 }
