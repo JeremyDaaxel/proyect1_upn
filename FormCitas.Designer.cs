@@ -1,4 +1,4 @@
-﻿namespace proyecto1
+namespace proyecto1
 {
     partial class FormCitas
     {
@@ -60,7 +60,7 @@
             btnregresar.Name = "btnregresar";
             btnregresar.Size = new System.Drawing.Size(165, 57);
             btnregresar.TabIndex = 1;
-            btnregresar.Text = "Regresar";
+            btnregresar.Text = "Regresar al Login";
             btnregresar.UseVisualStyleBackColor = false;
             btnregresar.Click += button1_Click;
             // 
@@ -68,14 +68,24 @@
             // 
             txtdni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             txtdni.Location = new System.Drawing.Point(150, 43);
+            txtdni.MaxLength = 8;
             txtdni.Name = "txtdni";
             txtdni.Size = new System.Drawing.Size(302, 21);
             txtdni.TabIndex = 2;
+            txtdni.KeyPress += txtdni_KeyPress;
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] {
+            "Medicina General",
+            "Pediatría",
+            "Cardiología",
+            "Ginecología",
+            "Odontología",
+            "Dermatología"});
             comboBox1.Location = new System.Drawing.Point(150, 107);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new System.Drawing.Size(196, 23);
@@ -158,6 +168,7 @@
             Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Modulo de Citas";
+            Load += FormCitas_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
