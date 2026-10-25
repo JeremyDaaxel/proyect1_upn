@@ -1,4 +1,4 @@
-﻿namespace proyecto1
+namespace proyecto1
 {
     partial class FormTopico
     {
@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             btnregresar = new System.Windows.Forms.Button();
-            txtpresion = new System.Windows.Forms.TextBox();
-            txttemp = new System.Windows.Forms.TextBox();
-            txtobs = new System.Windows.Forms.TextBox();
-            lblpresion = new System.Windows.Forms.Label();
-            lbltemp = new System.Windows.Forms.Label();
-            lblobs = new System.Windows.Forms.Label();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
             lbldni = new System.Windows.Forms.Label();
             txtdni = new System.Windows.Forms.TextBox();
+            lblpresion = new System.Windows.Forms.Label();
+            txtpresion = new System.Windows.Forms.TextBox();
+            lbltemp = new System.Windows.Forms.Label();
+            txttemp = new System.Windows.Forms.TextBox();
+            lblpeso = new System.Windows.Forms.Label();
+            txtpeso = new System.Windows.Forms.TextBox();
+            lblobs = new System.Windows.Forms.Label();
+            txtobs = new System.Windows.Forms.TextBox();
             btnatencion = new System.Windows.Forms.Button();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -47,83 +49,19 @@
             btnregresar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)230)), ((int)((byte)81)), ((int)((byte)0)));
             btnregresar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
             btnregresar.ForeColor = System.Drawing.Color.White;
-            btnregresar.Location = new System.Drawing.Point(410, 345);
+            btnregresar.Location = new System.Drawing.Point(542, 175);
             btnregresar.Name = "btnregresar";
-            btnregresar.Size = new System.Drawing.Size(147, 57);
-            btnregresar.TabIndex = 2;
-            btnregresar.Text = "Regresar";
+            btnregresar.Size = new System.Drawing.Size(140, 48);
+            btnregresar.TabIndex = 6;
+            btnregresar.Text = "Regresar al Login";
             btnregresar.UseVisualStyleBackColor = false;
             btnregresar.Click += button1_Click;
-            // 
-            // txtpresion
-            // 
-            txtpresion.Location = new System.Drawing.Point(156, 81);
-            txtpresion.Name = "txtpresion";
-            txtpresion.Size = new System.Drawing.Size(125, 23);
-            txtpresion.TabIndex = 3;
-            // 
-            // txttemp
-            // 
-            txttemp.Location = new System.Drawing.Point(156, 134);
-            txttemp.Name = "txttemp";
-            txttemp.Size = new System.Drawing.Size(125, 23);
-            txttemp.TabIndex = 4;
-            // 
-            // txtobs
-            // 
-            txtobs.Location = new System.Drawing.Point(385, 73);
-            txtobs.Multiline = true;
-            txtobs.Name = "txtobs";
-            txtobs.Size = new System.Drawing.Size(172, 84);
-            txtobs.TabIndex = 5;
-            // 
-            // lblpresion
-            // 
-            lblpresion.AutoSize = true;
-            lblpresion.Location = new System.Drawing.Point(40, 84);
-            lblpresion.Name = "lblpresion";
-            lblpresion.Size = new System.Drawing.Size(87, 15);
-            lblpresion.TabIndex = 6;
-            lblpresion.Text = "Presion Arterial";
-            // 
-            // lbltemp
-            // 
-            lbltemp.AutoSize = true;
-            lbltemp.Location = new System.Drawing.Point(12, 137);
-            lbltemp.Name = "lbltemp";
-            lbltemp.Size = new System.Drawing.Size(111, 15);
-            lbltemp.TabIndex = 7;
-            lbltemp.Text = "Temperatura y Peso";
-            // 
-            // lblobs
-            // 
-            lblobs.AutoSize = true;
-            lblobs.Location = new System.Drawing.Point(385, 50);
-            lblobs.Name = "lblobs";
-            lblobs.Size = new System.Drawing.Size(84, 15);
-            lblobs.TabIndex = 8;
-            lblobs.Text = "Observaciones";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(36, 237);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new System.Drawing.Size(300, 188);
-            dataGridView1.TabIndex = 9;
-            dataGridView1.Columns.Add("colDni", "DNI");
-            dataGridView1.Columns.Add("colPresion", "Presión");
-            dataGridView1.Columns.Add("colTempPeso", "Temp. y Peso");
-            dataGridView1.Columns.Add("colObs", "Observaciones");
             // 
             // lbldni
             // 
             lbldni.AutoSize = true;
-            lbldni.Location = new System.Drawing.Point(46, 37);
+            lbldni.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+            lbldni.Location = new System.Drawing.Point(25, 25);
             lbldni.Name = "lbldni";
             lbldni.Size = new System.Drawing.Size(83, 15);
             lbldni.TabIndex = 10;
@@ -131,30 +69,127 @@
             // 
             // txtdni
             // 
-            txtdni.Location = new System.Drawing.Point(156, 37);
+            txtdni.Location = new System.Drawing.Point(145, 22);
+            txtdni.MaxLength = 8;
             txtdni.Name = "txtdni";
-            txtdni.Size = new System.Drawing.Size(125, 23);
-            txtdni.TabIndex = 11;
+            txtdni.Size = new System.Drawing.Size(150, 23);
+            txtdni.TabIndex = 0;
+            txtdni.KeyPress += txtdni_KeyPress;
+            // 
+            // lblpresion
+            // 
+            lblpresion.AutoSize = true;
+            lblpresion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+            lblpresion.Location = new System.Drawing.Point(25, 65);
+            lblpresion.Name = "lblpresion";
+            lblpresion.Size = new System.Drawing.Size(87, 15);
+            lblpresion.TabIndex = 6;
+            lblpresion.Text = "Presión Arterial";
+            // 
+            // txtpresion
+            // 
+            txtpresion.Location = new System.Drawing.Point(145, 62);
+            txtpresion.Name = "txtpresion";
+            txtpresion.PlaceholderText = "ej. 120/80";
+            txtpresion.Size = new System.Drawing.Size(150, 23);
+            txtpresion.TabIndex = 1;
+            // 
+            // lbltemp
+            // 
+            lbltemp.AutoSize = true;
+            lbltemp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+            lbltemp.Location = new System.Drawing.Point(25, 105);
+            lbltemp.Name = "lbltemp";
+            lbltemp.Size = new System.Drawing.Size(99, 15);
+            lbltemp.TabIndex = 7;
+            lbltemp.Text = "Temperatura (°C)";
+            // 
+            // txttemp
+            // 
+            txttemp.Location = new System.Drawing.Point(145, 102);
+            txttemp.Name = "txttemp";
+            txttemp.PlaceholderText = "ej. 36.5";
+            txttemp.Size = new System.Drawing.Size(150, 23);
+            txttemp.TabIndex = 2;
+            txttemp.KeyPress += txtDecimal_KeyPress;
+            // 
+            // lblpeso
+            // 
+            lblpeso.AutoSize = true;
+            lblpeso.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+            lblpeso.Location = new System.Drawing.Point(25, 145);
+            lblpeso.Name = "lblpeso";
+            lblpeso.Size = new System.Drawing.Size(58, 15);
+            lblpeso.TabIndex = 13;
+            lblpeso.Text = "Peso (kg)";
+            // 
+            // txtpeso
+            // 
+            txtpeso.Location = new System.Drawing.Point(145, 142);
+            txtpeso.Name = "txtpeso";
+            txtpeso.PlaceholderText = "ej. 70.0";
+            txtpeso.Size = new System.Drawing.Size(150, 23);
+            txtpeso.TabIndex = 3;
+            txtpeso.KeyPress += txtDecimal_KeyPress;
+            // 
+            // lblobs
+            // 
+            lblobs.AutoSize = true;
+            lblobs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+            lblobs.Location = new System.Drawing.Point(340, 22);
+            lblobs.Name = "lblobs";
+            lblobs.Size = new System.Drawing.Size(84, 15);
+            lblobs.TabIndex = 8;
+            lblobs.Text = "Observaciones";
+            // 
+            // txtobs
+            // 
+            txtobs.Location = new System.Drawing.Point(340, 43);
+            txtobs.Multiline = true;
+            txtobs.Name = "txtobs";
+            txtobs.Size = new System.Drawing.Size(342, 120);
+            txtobs.TabIndex = 4;
             // 
             // btnatencion
             // 
             btnatencion.BackColor = System.Drawing.Color.FromArgb(((int)((byte)2)), ((int)((byte)136)), ((int)((byte)209)));
             btnatencion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
             btnatencion.ForeColor = System.Drawing.Color.White;
-            btnatencion.Location = new System.Drawing.Point(410, 189);
+            btnatencion.Location = new System.Drawing.Point(380, 175);
             btnatencion.Name = "btnatencion";
-            btnatencion.Size = new System.Drawing.Size(152, 55);
-            btnatencion.TabIndex = 12;
-            btnatencion.Text = "Guardar Atencion";
+            btnatencion.Size = new System.Drawing.Size(150, 48);
+            btnatencion.TabIndex = 5;
+            btnatencion.Text = "Guardar Atención";
             btnatencion.UseVisualStyleBackColor = false;
             btnatencion.Click += btnatencion_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(25, 235);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new System.Drawing.Size(657, 200);
+            dataGridView1.TabIndex = 9;
+            dataGridView1.Columns.Add("colDni", "DNI");
+            dataGridView1.Columns.Add("colPresion", "Presión");
+            dataGridView1.Columns.Add("colTemp", "Temperatura");
+            dataGridView1.Columns.Add("colPeso", "Peso");
+            dataGridView1.Columns.Add("colObs", "Observaciones");
+            dataGridView1.Columns.Add("colSeguro", "Seguro");
+            dataGridView1.Columns.Add("colPrecio", "Precio / Costo");
             // 
             // FormTopico
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(((int)((byte)224)), ((int)((byte)242)), ((int)((byte)241)));
-            ClientSize = new System.Drawing.Size(602, 450);
+            ClientSize = new System.Drawing.Size(710, 460);
+            Controls.Add(txtpeso);
+            Controls.Add(lblpeso);
             Controls.Add(btnatencion);
             Controls.Add(txtdni);
             Controls.Add(lbldni);
@@ -169,6 +204,7 @@
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Módulo de Tópico / Enfermería";
+            Load += FormTopico_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -179,6 +215,8 @@
         private Button btnregresar;
         private TextBox txtpresion;
         private TextBox txttemp;
+        private Label lblpeso;
+        private TextBox txtpeso;
         private TextBox txtobs;
         private Label lblpresion;
         private Label lbltemp;

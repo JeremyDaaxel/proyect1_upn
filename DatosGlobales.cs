@@ -12,13 +12,17 @@ namespace proyecto1
         public string Seguro = "";
     }
     
-    //datos del triaje que registra tópico (presion, temperatura y peso, observaciones)
+    //datos del triaje que registra tópico (presion, temperatura y peso separados, observaciones, seguro y costo)
     public class Triaje
     {
         public int Dni;
         public string PresionArterial = "";
-        public string TemperaturaPeso = "";
+        public string Temperatura = "";
+        public string Peso = "";
+        public string TemperaturaPeso => $"{Temperatura} °C / {Peso} kg";
         public string Observaciones = "";
+        public string Seguro = "";
+        public int Costo = 0;
     }
 
     //datos del diagnostico que registra el doctor (sintomas, diagnostico, receta)
