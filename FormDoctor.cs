@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,113 +15,188 @@ namespace proyecto1
             InitializeComponent();
         }
 
+        private void FormDoctor_Load(object sender, EventArgs e)
+        {
+            CargarHistorial();
+        }
+
+        private void CargarHistorial()
+        {
+            dataGridView1.Rows.Clear();
+            for (int i = 0; i < Datos.contadorDiagnosticos; i++)
+            {
+                Diagnostico diag = Datos.diagnosticos[i];
+                Paciente? pac = BuscarPaciente(diag.Dni);
+                Triaje? tri = BuscarTriaje(diag.Dni);
+                Cita? cit = BuscarCita(diag.Dni);
+
+                string nombreCompleto = pac != null ? (pac.Nombre + " " + pac.Apellido) : "No registrado";
+                string especialidad = cit != null ? cit.Especialidad : "Sin cita previa";
+                string presion = tri != null ? tri.PresionArterial : "-";
+                string temp = tri != null ? (tri.Temperatura + " °C") : "-";
+                string peso = tri != null ? (tri.Peso + " kg") : "-";
+
+                dataGridView1.Rows.Add(diag.Dni, nombreCompleto, especialidad, presion, temp, peso,
+                    diag.Sintomas, diag.DiagnosticoMedico, diag.Receta);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            FormMenu menu = new FormMenu();
-            menu.Show();
+            FormLogin login = new FormLogin();
+            login.Show();
             this.Close();
         }
 
-        private void FormDoctor_Load(object sender, EventArgs e)
+        private void txtdni_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            //validar que se haya escrito un dni
-            if (txtdni.Text == "")
+            if (string.IsNullOrWhiteSpace(txtdni.Text))
             {
                 MessageBox.Show("Escribe un DNI para buscar.", "Falta un dato",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int dniBuscado = int.Parse(txtdni.Text);
-
-            //funcion: le mando el dni, me retorna el paciente encontrado (o null si no existe)
-            Paciente pacienteEncontrado = BuscarPaciente(dniBuscado);
-
-            //si no encontro a nadie con ese dni, avisamos y paramos aca
-
-            if (pacienteEncontrado == null)
+            if (txtdni.Text.Trim().Length != 8 || !int.TryParse(txtdni.Text.Trim(), out int dniBuscado))
             {
-                txtResultado.Text = "No se encontro un paciente registrado con ese DNI.";
+                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //recorremos la lista de atenciones de topico buscando ese mismo dni
-            Triaje triajeEncontrado = null;
-
-            for (int i = 0; i < Datos.contadorAtenciones; i++)
-            { if (Datos.atenciones[i].Dni == dniBuscado)
-                { triajeEncontrado = Datos.atenciones[i];
-                }
-            }
-
-            //mostrar el resultado en el textbox, linea por linea con Environment.NewLine
-            if (triajeEncontrado == null)
+            Paciente? paciente = BuscarPaciente(dniBuscado);
+            if (paciente == null)
             {
-                MessageBox.Show("El paciente todavia no tiene registro de topico.", "Sin triaje",
+                lblinfo.ForeColor = Color.DarkRed;
+                lblinfo.Text = "No se encontró ningún paciente registrado con el DNI " + dniBuscado;
+                MessageBox.Show("No se encontró un paciente registrado con ese DNI.", "Paciente no encontrado",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtResultado.Text = "Paciente: " + pacienteEncontrado.Nombre + " " + pacienteEncontrado.Apellido + Environment.NewLine +
-                    "Seguro: " + pacienteEncontrado.Seguro + Environment.NewLine +
-                    "Celular: " + pacienteEncontrado.Celular;
+                return;
             }
-            else
+
+            Triaje? triaje = BuscarTriaje(dniBuscado);
+            Cita? cita = BuscarCita(dniBuscado);
+
+            string infoEspecialidad = cita != null ? cita.Especialidad : "(Sin cita)";
+            string infoTriaje = triaje != null 
+                ? $"Presión: {triaje.PresionArterial} | Temp: {triaje.Temperatura} °C | Peso: {triaje.Peso} kg" 
+                : "(Sin triaje de tópico)";
+
+            lblinfo.ForeColor = Color.DarkGreen;
+            lblinfo.Text = $"Paciente: {paciente.Nombre} {paciente.Apellido} | Seguro: {paciente.Seguro} | Esp: {infoEspecialidad} | {infoTriaje}";
+
+            if (triaje == null)
             {
-                txtResultado.Text = "Paciente: " + pacienteEncontrado.Nombre + " " + pacienteEncontrado.Apellido + Environment.NewLine +
-                    "Seguro: " + pacienteEncontrado.Seguro + Environment.NewLine +
-                    "Celular: " + pacienteEncontrado.Celular + Environment.NewLine +
-                    "Presion: " + triajeEncontrado.PresionArterial + Environment.NewLine +
-                    "Temp/Peso: " + triajeEncontrado.TemperaturaPeso + Environment.NewLine +
-                    "Observaciones topico: " + triajeEncontrado.Observaciones;
+                MessageBox.Show("El paciente todavía no tiene registro de signos vitales en tópico.", "Aviso de Triaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btndiagnostico_Click(object sender, EventArgs e)
-        {   //condicionales (si los inputs tan vacios, da error)
-            if (txtdni.Text == "" || txtdiagnostico.Text == "" || txtreceta.Text == "")
+        {
+            if (string.IsNullOrWhiteSpace(txtdni.Text) || 
+                string.IsNullOrWhiteSpace(txtdiagnostico.Text) || 
+                string.IsNullOrWhiteSpace(txtreceta.Text))
             {
-                MessageBox.Show("Completa DNI, diagnóstico y receta.", "Faltan datos",
+                MessageBox.Show("Completa al menos el DNI, diagnóstico y receta médica.", "Faltan datos",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //creamos el objeto nuevoDiagnostico (de la clase Diagnostico en DatosGlobales) y le asignamos los datos
-            Diagnostico nuevoDiagnostico = new Diagnostico();
-            nuevoDiagnostico.Dni = int.Parse(txtdni.Text);
-            nuevoDiagnostico.Sintomas = txtsintomas.Text;
-            nuevoDiagnostico.DiagnosticoMedico = txtdiagnostico.Text;
-            nuevoDiagnostico.Receta = txtreceta.Text;
+            if (txtdni.Text.Trim().Length != 8 || !int.TryParse(txtdni.Text.Trim(), out int dni))
+            {
+                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //agregamos los datos que ingresamos a la lista de diagnosticos que tenemos en DatosGlobales
+            Paciente? paciente = BuscarPaciente(dni);
+            if (paciente == null)
+            {
+                MessageBox.Show("El paciente con este DNI no está registrado en el sistema. Debe registrarse primero.",
+                    "Paciente no registrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Triaje? triaje = BuscarTriaje(dni);
+            Cita? cita = BuscarCita(dni);
+
+            // Creamos y guardamos el diagnóstico
+            Diagnostico nuevoDiagnostico = new Diagnostico();
+            nuevoDiagnostico.Dni = dni;
+            nuevoDiagnostico.Sintomas = txtsintomas.Text.Trim();
+            nuevoDiagnostico.DiagnosticoMedico = txtdiagnostico.Text.Trim();
+            nuevoDiagnostico.Receta = txtreceta.Text.Trim();
+
             Datos.diagnosticos[Datos.contadorDiagnosticos++] = nuevoDiagnostico;
 
-            MessageBox.Show("Diagnóstico guardado con éxito.", "Registro exitoso",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Datos complementarios para el DataGridView
+            string nombreCompleto = paciente.Nombre + " " + paciente.Apellido;
+            string especialidad = cita != null ? cita.Especialidad : "General";
+            string presion = triaje != null ? triaje.PresionArterial : "-";
+            string temp = triaje != null ? (triaje.Temperatura + " °C") : "-";
+            string peso = triaje != null ? (triaje.Peso + " kg") : "-";
 
-            //limpiamos los inputs una vez se registre
+            // Agregamos la fila al DataGridView con la información de tópico, especialidad y diagnóstico
+            dataGridView1.Rows.Add(dni, nombreCompleto, especialidad, presion, temp, peso,
+                nuevoDiagnostico.Sintomas, nuevoDiagnostico.DiagnosticoMedico, nuevoDiagnostico.Receta);
+
+            MessageBox.Show("Diagnóstico y receta guardados con éxito en el expediente del paciente.", 
+                "Consulta Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Limpiamos los campos
             txtsintomas.Clear();
             txtdiagnostico.Clear();
             txtreceta.Clear();
+            txtdni.Clear();
+            lblinfo.ForeColor = Color.DarkBlue;
+            lblinfo.Text = "Ingresa el DNI del paciente para consultar triaje y especialidad de cita.";
         }
 
-        //funcion: recorre Datos.pacientes y retorna el paciente que tenga ese dni (o null)
-        private Paciente BuscarPaciente(int dni)
+        private Paciente? BuscarPaciente(int dni)
         {
-            Paciente encontrado = null;
-
             for (int i = 0; i < Datos.contadorPacientes; i++)
             {
                 if (Datos.pacientes[i].Dni == dni)
                 {
-                    encontrado = Datos.pacientes[i];
+                    return Datos.pacientes[i];
                 }
             }
+            return null;
+        }
 
-            return encontrado;
+        private Triaje? BuscarTriaje(int dni)
+        {
+            // Buscamos la última atención de tópico registrada para ese DNI
+            for (int i = Datos.contadorAtenciones - 1; i >= 0; i--)
+            {
+                if (Datos.atenciones[i].Dni == dni)
+                {
+                    return Datos.atenciones[i];
+                }
+            }
+            return null;
+        }
+
+        private Cita? BuscarCita(int dni)
+        {
+            // Buscamos la última cita registrada para ese DNI
+            for (int i = Datos.contadorCitas - 1; i >= 0; i--)
+            {
+                if (Datos.citas[i].Dni == dni)
+                {
+                    return Datos.citas[i];
+                }
+            }
+            return null;
         }
     }
 }
