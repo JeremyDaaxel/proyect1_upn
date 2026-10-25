@@ -1,4 +1,4 @@
-﻿namespace proyecto1
+namespace proyecto1
 {
     partial class FormRegistroPaciente
     {
@@ -52,8 +52,8 @@
             btnsalir.Location = new System.Drawing.Point(418, 344);
             btnsalir.Name = "btnsalir";
             btnsalir.Size = new System.Drawing.Size(142, 55);
-            btnsalir.TabIndex = 0;
-            btnsalir.Text = "Regresar";
+            btnsalir.TabIndex = 8;
+            btnsalir.Text = "Regresar al Login";
             btnsalir.UseVisualStyleBackColor = false;
             btnsalir.Click += button1_Click;
             // 
@@ -63,7 +63,7 @@
             label1.Location = new System.Drawing.Point(40, 38);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(77, 15);
-            label1.TabIndex = 1;
+            label1.TabIndex = 9;
             label1.Text = "DNI / Código";
             // 
             // label2
@@ -72,7 +72,7 @@
             label2.Location = new System.Drawing.Point(40, 83);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(56, 15);
-            label2.TabIndex = 2;
+            label2.TabIndex = 10;
             label2.Text = "Nombres";
             // 
             // label3
@@ -81,7 +81,7 @@
             label3.Location = new System.Drawing.Point(40, 129);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(56, 15);
-            label3.TabIndex = 3;
+            label3.TabIndex = 11;
             label3.Text = "Apellidos";
             // 
             // label4
@@ -90,7 +90,7 @@
             label4.Location = new System.Drawing.Point(40, 179);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(101, 15);
-            label4.TabIndex = 4;
+            label4.TabIndex = 12;
             label4.Text = "Teléfono / Celular";
             // 
             // label5
@@ -99,45 +99,52 @@
             label5.Location = new System.Drawing.Point(40, 224);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(87, 15);
-            label5.TabIndex = 5;
+            label5.TabIndex = 13;
             label5.Text = "Tipo de Seguro";
             // 
             // txtdni
             // 
             txtdni.Location = new System.Drawing.Point(144, 35);
+            txtdni.MaxLength = 8;
             txtdni.Name = "txtdni";
             txtdni.Size = new System.Drawing.Size(205, 23);
-            txtdni.TabIndex = 6;
+            txtdni.TabIndex = 0;
+            txtdni.KeyPress += txtNumeroSolo_KeyPress;
             // 
             // txtnombre
             // 
-            txtnombre.Location = new System.Drawing.Point(116, 80);
+            txtnombre.Location = new System.Drawing.Point(144, 80);
             txtnombre.Name = "txtnombre";
-            txtnombre.Size = new System.Drawing.Size(233, 23);
-            txtnombre.TabIndex = 7;
+            txtnombre.Size = new System.Drawing.Size(205, 23);
+            txtnombre.TabIndex = 1;
+            txtnombre.KeyPress += txtTextoSolo_KeyPress;
             // 
             // txtapellido
             // 
-            txtapellido.Location = new System.Drawing.Point(118, 126);
+            txtapellido.Location = new System.Drawing.Point(144, 126);
             txtapellido.Name = "txtapellido";
-            txtapellido.Size = new System.Drawing.Size(231, 23);
-            txtapellido.TabIndex = 8;
+            txtapellido.Size = new System.Drawing.Size(205, 23);
+            txtapellido.TabIndex = 2;
+            txtapellido.KeyPress += txtTextoSolo_KeyPress;
             // 
             // txtcel
             // 
-            txtcel.Location = new System.Drawing.Point(173, 176);
+            txtcel.Location = new System.Drawing.Point(144, 176);
+            txtcel.MaxLength = 9;
             txtcel.Name = "txtcel";
-            txtcel.Size = new System.Drawing.Size(176, 23);
-            txtcel.TabIndex = 9;
+            txtcel.Size = new System.Drawing.Size(205, 23);
+            txtcel.TabIndex = 3;
+            txtcel.KeyPress += txtNumeroSolo_KeyPress;
             // 
             // cboseguro
             // 
+            cboseguro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboseguro.FormattingEnabled = true;
             cboseguro.Items.AddRange(new object[] { "SIS", "Particular", "EsSalud" });
-            cboseguro.Location = new System.Drawing.Point(157, 221);
+            cboseguro.Location = new System.Drawing.Point(144, 221);
             cboseguro.Name = "cboseguro";
-            cboseguro.Size = new System.Drawing.Size(192, 23);
-            cboseguro.TabIndex = 10;
+            cboseguro.Size = new System.Drawing.Size(205, 23);
+            cboseguro.TabIndex = 4;
             // 
             // btnpaciente
             // 
@@ -147,27 +154,27 @@
             btnpaciente.Location = new System.Drawing.Point(68, 341);
             btnpaciente.Name = "btnpaciente";
             btnpaciente.Size = new System.Drawing.Size(143, 58);
-            btnpaciente.TabIndex = 11;
+            btnpaciente.TabIndex = 7;
             btnpaciente.Text = "Guardar Paciente";
             btnpaciente.UseVisualStyleBackColor = false;
             btnpaciente.Click += btnpaciente_Click;
-            //
+            // 
             // lblcorreo
-            //
+            // 
             lblcorreo.AutoSize = true;
             lblcorreo.Location = new System.Drawing.Point(40, 269);
             lblcorreo.Name = "lblcorreo";
             lblcorreo.Size = new System.Drawing.Size(97, 15);
-            lblcorreo.TabIndex = 12;
+            lblcorreo.TabIndex = 14;
             lblcorreo.Text = "Correo Electrónico";
-            //
+            // 
             // txtcorreo
-            //
+            // 
             txtcorreo.Location = new System.Drawing.Point(144, 266);
             txtcorreo.Name = "txtcorreo";
             txtcorreo.Size = new System.Drawing.Size(260, 23);
-            txtcorreo.TabIndex = 13;
-            //
+            txtcorreo.TabIndex = 5;
+            // 
             // FormRegistroPaciente
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
