@@ -69,7 +69,7 @@ namespace proyecto1
                 return;
             }
 
-            Paciente pacienteEncontrado = null;
+            Paciente? pacienteEncontrado = null;
 
             // Buscamos si el paciente ya esta registrado
             for (int i = 0; i < Datos.contadorPacientes; i++)
