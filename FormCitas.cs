@@ -17,6 +17,8 @@ namespace proyecto1
 
         private void FormCitas_Load(object sender, EventArgs e)
         {
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.ForeColor = Color.Black;
             CargarCitas();
         }
 

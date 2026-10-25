@@ -132,6 +132,13 @@ namespace proyecto1
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new System.Drawing.Size(430, 185);
             dataGridView1.TabIndex = 7;
+            dataGridView1.ForeColor = System.Drawing.Color.Black;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Columns.Add("colDni", "DNI");
             dataGridView1.Columns.Add("colEspecialidad", "Especialidad");
             dataGridView1.Columns.Add("colFecha", "Fecha");
@@ -140,6 +147,7 @@ namespace proyecto1
             // button1
             // 
             button1.BackColor = System.Drawing.Color.FromArgb(((int)((byte)2)), ((int)((byte)136)), ((int)((byte)209)));
+            button1.ForeColor = System.Drawing.Color.White;
             button1.Location = new System.Drawing.Point(506, 110);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(173, 59);
@@ -164,7 +172,7 @@ namespace proyecto1
             Controls.Add(btnregresar);
             Controls.Add(lbldni);
             Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            ForeColor = System.Drawing.Color.White;
+            ForeColor = System.Drawing.Color.Black;
             Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Modulo de Citas";

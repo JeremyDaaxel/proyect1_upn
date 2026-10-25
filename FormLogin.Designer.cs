@@ -29,88 +29,88 @@ namespace proyecto1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
-            lbltitulo = new System.Windows.Forms.Label();
-            lblusuario = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            txtusuario = new System.Windows.Forms.TextBox();
-            lblpassword = new System.Windows.Forms.Label();
-            txtpassword = new System.Windows.Forms.TextBox();
-            btningresar = new System.Windows.Forms.Button();
-            btnRegistrar = new System.Windows.Forms.Button();
-            lblSalir = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
+            lbltitulo = new Label();
+            lblusuario = new Label();
+            label3 = new Label();
+            txtusuario = new TextBox();
+            lblpassword = new Label();
+            txtpassword = new TextBox();
+            btningresar = new Button();
+            btnRegistrar = new Button();
+            lblSalir = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lbltitulo
             // 
             lbltitulo.AutoSize = true;
-            lbltitulo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            lbltitulo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            lbltitulo.Location = new System.Drawing.Point(500, 60);
+            lbltitulo.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbltitulo.ForeColor = SystemColors.ButtonFace;
+            lbltitulo.Location = new Point(500, 60);
             lbltitulo.Name = "lbltitulo";
-            lbltitulo.Size = new System.Drawing.Size(180, 37);
+            lbltitulo.Size = new Size(187, 37);
             lbltitulo.TabIndex = 4;
             lbltitulo.Text = "Iniciar Sesión";
             // 
             // lblusuario
             // 
             lblusuario.AutoSize = true;
-            lblusuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            lblusuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblusuario.Location = new System.Drawing.Point(465, 125);
+            lblusuario.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblusuario.ForeColor = SystemColors.ButtonHighlight;
+            lblusuario.Location = new Point(465, 125);
             lblusuario.Name = "lblusuario";
-            lblusuario.Size = new System.Drawing.Size(142, 17);
+            lblusuario.Size = new Size(143, 17);
             lblusuario.TabIndex = 5;
             lblusuario.Text = "Usuario (DNI / Código)";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.Color.Red;
-            label3.Location = new System.Drawing.Point(465, 430);
+            label3.ForeColor = Color.Red;
+            label3.Location = new Point(465, 430);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(0, 15);
+            label3.Size = new Size(0, 15);
             label3.TabIndex = 6;
             // 
             // txtusuario
             // 
-            txtusuario.Location = new System.Drawing.Point(465, 148);
-            txtusuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtusuario.Location = new Point(465, 148);
+            txtusuario.Margin = new Padding(3, 2, 3, 2);
             txtusuario.Name = "txtusuario";
             txtusuario.PlaceholderText = "doctor / topico / DNI";
-            txtusuario.Size = new System.Drawing.Size(248, 23);
+            txtusuario.Size = new Size(248, 23);
             txtusuario.TabIndex = 0;
             // 
             // lblpassword
             // 
             lblpassword.AutoSize = true;
-            lblpassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            lblpassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblpassword.Location = new System.Drawing.Point(465, 190);
+            lblpassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblpassword.ForeColor = SystemColors.ButtonHighlight;
+            lblpassword.Location = new Point(465, 190);
             lblpassword.Name = "lblpassword";
-            lblpassword.Size = new System.Drawing.Size(74, 17);
+            lblpassword.Size = new Size(74, 17);
             lblpassword.TabIndex = 9;
             lblpassword.Text = "Contraseña";
             // 
             // txtpassword
             // 
-            txtpassword.Location = new System.Drawing.Point(465, 213);
-            txtpassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtpassword.Location = new Point(465, 213);
+            txtpassword.Margin = new Padding(3, 2, 3, 2);
             txtpassword.Name = "txtpassword";
-            txtpassword.Size = new System.Drawing.Size(248, 23);
+            txtpassword.Size = new Size(248, 23);
             txtpassword.TabIndex = 1;
             txtpassword.UseSystemPasswordChar = true;
             // 
             // btningresar
             // 
-            btningresar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)2)), ((int)((byte)136)), ((int)((byte)209)));
-            btningresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btningresar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            btningresar.ForeColor = System.Drawing.Color.White;
-            btningresar.Location = new System.Drawing.Point(465, 260);
-            btningresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btningresar.BackColor = Color.FromArgb(2, 136, 209);
+            btningresar.Cursor = Cursors.Hand;
+            btningresar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btningresar.ForeColor = Color.White;
+            btningresar.Location = new Point(465, 260);
+            btningresar.Margin = new Padding(3, 2, 3, 2);
             btningresar.Name = "btningresar";
-            btningresar.Size = new System.Drawing.Size(248, 36);
+            btningresar.Size = new Size(248, 36);
             btningresar.TabIndex = 2;
             btningresar.Text = "Ingresar";
             btningresar.UseVisualStyleBackColor = false;
@@ -118,14 +118,14 @@ namespace proyecto1
             // 
             // btnRegistrar
             // 
-            btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)0)), ((int)((byte)150)), ((int)((byte)136)));
-            btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            btnRegistrar.ForeColor = System.Drawing.Color.White;
-            btnRegistrar.Location = new System.Drawing.Point(465, 308);
-            btnRegistrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnRegistrar.BackColor = Color.FromArgb(0, 150, 136);
+            btnRegistrar.Cursor = Cursors.Hand;
+            btnRegistrar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRegistrar.ForeColor = Color.White;
+            btnRegistrar.Location = new Point(465, 308);
+            btnRegistrar.Margin = new Padding(3, 2, 3, 2);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new System.Drawing.Size(248, 36);
+            btnRegistrar.Size = new Size(248, 36);
             btnRegistrar.TabIndex = 3;
             btnRegistrar.Text = "Registrar Paciente";
             btnRegistrar.UseVisualStyleBackColor = false;
@@ -134,32 +134,32 @@ namespace proyecto1
             // lblSalir
             // 
             lblSalir.AutoSize = true;
-            lblSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            lblSalir.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            lblSalir.ForeColor = System.Drawing.Color.OrangeRed;
-            lblSalir.Location = new System.Drawing.Point(565, 365);
+            lblSalir.Cursor = Cursors.Hand;
+            lblSalir.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblSalir.ForeColor = Color.OrangeRed;
+            lblSalir.Location = new Point(565, 365);
             lblSalir.Name = "lblSalir";
-            lblSalir.Size = new System.Drawing.Size(41, 21);
+            lblSalir.Size = new Size(41, 21);
             lblSalir.TabIndex = 4;
             lblSalir.Text = "Salir";
             lblSalir.Click += lblSalir_Click;
             // 
             // label1
             // 
-            label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            label1.Image = ((System.Drawing.Image)resources.GetObject("label1.Image"));
-            label1.Location = new System.Drawing.Point(-1, -3);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Image = (Image)resources.GetObject("label1.Image");
+            label1.Location = new Point(-1, -3);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(396, 507);
+            label1.Size = new Size(396, 507);
             label1.TabIndex = 15;
             // 
             // FormLogin
             // 
             AcceptButton = btningresar;
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.FromArgb(((int)((byte)43)), ((int)((byte)38)), ((int)((byte)56)));
-            ClientSize = new System.Drawing.Size(794, 502);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(43, 38, 56);
+            ClientSize = new Size(794, 502);
             Controls.Add(label1);
             Controls.Add(lblSalir);
             Controls.Add(btnRegistrar);
@@ -170,9 +170,10 @@ namespace proyecto1
             Controls.Add(label3);
             Controls.Add(lblusuario);
             Controls.Add(lbltitulo);
-            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             Load += FormLogin_Load;
             ResumeLayout(false);
