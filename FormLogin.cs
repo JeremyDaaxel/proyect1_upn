@@ -14,6 +14,34 @@ namespace proyecto1
         public FormLogin()
         {
             InitializeComponent();
+            this.AcceptButton = btningresar;
+            txtusuario.KeyDown += Txtusuario_KeyDown;
+            txtpassword.KeyDown += Txtpassword_KeyDown;
+        }
+
+        private void Txtusuario_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita el sonido de alerta al presionar Enter
+                if (string.IsNullOrWhiteSpace(txtpassword.Text))
+                {
+                    txtpassword.Focus();
+                }
+                else
+                {
+                    btningresar.PerformClick();
+                }
+            }
+        }
+
+        private void Txtpassword_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita el sonido de alerta al presionar Enter
+                btningresar.PerformClick();
+            }
         }
 
         private void btningresar_Click(object sender, EventArgs e)
@@ -122,6 +150,14 @@ namespace proyecto1
         private void FormLogin_Load(object sender, EventArgs e)
         {
             txtpassword.Clear();
+            if (string.IsNullOrWhiteSpace(txtusuario.Text))
+            {
+                txtusuario.Focus();
+            }
+            else
+            {
+                txtpassword.Focus();
+            }
         }
     }
 }

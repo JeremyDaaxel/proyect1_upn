@@ -155,6 +155,7 @@ namespace proyecto1
             // 
             // FormLogin
             // 
+            AcceptButton = btningresar;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(((int)((byte)43)), ((int)((byte)38)), ((int)((byte)56)));
